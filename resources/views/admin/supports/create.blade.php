@@ -11,15 +11,23 @@
 </head>
 
 <body>
-    <form action="{{ route('supports.store')}}" method="POST">
+    @if (isset($errors) && count($errors) > 0)
+        <div class="alert alert-warning">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+    <form action="{{ route('supports.store') }}" method="POST">
         @csrf()
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="text" class="form-control"  placeholder="Assunto" name="subject">
+            <input type="text" class="form-control" placeholder="Assunto" name="subject"
+                value="{{ old('subject') }}">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea type="text" class="form-control" placeholder="Descrição" cols="30" rows="5" name="body"></textarea>
+            <textarea type="text" class="form-control" placeholder="Descrição" cols="30" rows="5" name="body">{{ old('body') }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Gravar</button>
     </form>
