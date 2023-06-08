@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SupportsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('supports', [SupportsController::class, 'store'])->name('supports.store');
+Route::get('supports/create', [SupportsController::class, 'create'])->name('supports.create');
+Route::get('supports', [SupportsController::class, 'index'])->name('supports.index');
