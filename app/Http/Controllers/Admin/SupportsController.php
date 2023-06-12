@@ -14,8 +14,8 @@ class SupportsController extends Controller
 {
     public function __construct(
         protected SupportService $service
-    ) {
-    }
+    ) {}
+
     public function index(Request $request)
     {
         $supports = $this->service->getAll($request->filter);
